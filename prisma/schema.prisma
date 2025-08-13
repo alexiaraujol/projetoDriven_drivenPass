@@ -6,7 +6,6 @@
 
 generator client {
   provider = "prisma-client-js"
-  
 }
 
 datasource db {
@@ -15,30 +14,40 @@ datasource db {
 }
 
 model User {
-  id Int @id @default(autoincrement())
-  name String  
-  email String
+  id       Int    @id @default(autoincrement())
+  name     String
+  email    String
   password String
-  
-  Credential Credentials[]
 
-  
+  Credential Credentials[]
+  Notes      SafeNote[]
 
   @@map("user")
 }
 
 model Credentials {
-  id Int @id @default(autoincrement())
-  title String
-  url String
+  id       Int    @id @default(autoincrement())
+  title    String
+  url      String
   username String
   password String
 
-  User    User   @relation(fields: [userId], references: [id])
-  
+  User User @relation(fields: [userId], references: [id])
+
   userId Int
 
   @@unique([userId, title])
-  
   @@map("credential")
+}
+
+model SafeNote {
+  id        Int      @id @default(autoincrement())
+  title     String   @db.VarChar(50)
+  text      String   @db.VarChar(1000)
+  userId    Int
+  createdAt DateTime @default(now())
+  User      User     @relation(fields: [userId], references: [id])
+
+  @@unique([userId, title])
+  @@map("safenotes")
 }
