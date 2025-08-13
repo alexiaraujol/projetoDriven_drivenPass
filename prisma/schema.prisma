@@ -30,4 +30,5 @@ model Credentials {
   username String
   password String
   
+  @@map("credential")
 }
