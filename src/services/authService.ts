@@ -34,7 +34,7 @@ export async function creatNewUser(name: string, email: string, password: string
 }
 
 
-export async function signIn(email: string, password: string) {
+export async function login(email: string, password: string) {
 
     
     const registeredUser = await isRegistered(email);

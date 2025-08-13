@@ -19,6 +19,10 @@ model User {
   name String  
   email String
   password String
+  
+  Credential Credentials[]
+
+  
 
   @@map("user")
 }
@@ -29,6 +33,12 @@ model Credentials {
   url String
   username String
   password String
+
+  User    User   @relation(fields: [userId], references: [id])
+  
+  userId Int
+
+  @@unique([userId, title])
   
   @@map("credential")
 }
