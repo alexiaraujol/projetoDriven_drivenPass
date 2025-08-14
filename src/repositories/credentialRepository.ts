@@ -4,10 +4,10 @@ import prisma from "../database/database";
 export async function findByUserIdAndTitle(userId: number, title: string) {
     return await prisma.credentials.findUnique({
         where: { 
-            title_userId: {
-                title,
-                userId
-            }
+         userId_title: {
+            title,
+            userId
+         }
         }
     });
 }

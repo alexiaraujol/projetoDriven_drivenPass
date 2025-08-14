@@ -1,8 +1,8 @@
-import { createCredential, deleteCredential, getAllCredential, specificCredentials } from "controllers/credentialController";
+import { createCredential, deleteCredential, getAllCredential, specificCredentials } from "../controllers/credentialController";
 import { Router } from "express";
-import { authenticateToken } from "middleware/tokenMiddleware";
-import { validateSchema } from "middleware/validateSchema";
-import { registerCredential } from "schema/credentialSchema";
+import { authenticateToken } from "../middleware/tokenMiddleware";
+import { validateSchema } from "../middleware/validateSchema";
+import { registerCredential } from "../schema/credentialSchema";
 
 const credentialRouter = Router();
 

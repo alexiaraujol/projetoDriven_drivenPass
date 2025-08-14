@@ -21,6 +21,7 @@ model User {
 
   Credential Credentials[]
   Notes      SafeNote[]
+  Cards      Card[]
 
   @@map("user")
 }
@@ -50,4 +51,30 @@ model SafeNote {
 
   @@unique([userId, title])
   @@map("safenotes")
+}
+
+model Card {
+  id             Int      @id @default(autoincrement())
+  title          String   @db.VarChar(50)
+  cardNumber     String
+  cardName       String
+  CardCVV        String
+  CardExpiration String
+  CardPassword   String
+  isVirtual      Boolean
+  type           CardType
+  userId         Int
+  createdAt      DateTime @default(now())
+  User           User     @relation(fields: [userId], references: [id])
+
+  @@unique([userId, title])
+  @@map("cards")
+}
+
+enum CardType {
+  credit
+  debit
+  both
+
+  @@map("cardType")
 }
