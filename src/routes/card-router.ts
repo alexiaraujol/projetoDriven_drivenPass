@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { authenticateToken } from "../middleware/tokenMiddleware";
 import { validateSchema } from "../middleware/validateSchema";
-import { registerCard } from "schema/cardSchema";
+import { registerCard } from "../schema/cardSchema";
 import { createCard, deleteCard, getAllCards, specificCard } from "../controllers/cardController";
 
 
