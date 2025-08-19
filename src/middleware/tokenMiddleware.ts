@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { ErrorInfo } from "./errMiddleware";
+import { ErrorInfo } from "./errorInfo";
 import jwt from 'jsonwebtoken'
 
 export async function authenticateToken (req: Request, res: Response, next: NextFunction){

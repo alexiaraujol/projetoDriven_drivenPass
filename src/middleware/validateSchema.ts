@@ -1,6 +1,6 @@
 import { ObjectSchema } from "joi";
 import { Request, Response, NextFunction } from "express";
-import { ErrorInfo } from "./errMiddleware";
+import { ErrorInfo } from "./errorInfo";
 
 export function validateSchema(schema: ObjectSchema) {
   return (req: Request, _res: Response, next: NextFunction) => {
