@@ -1,20 +1,38 @@
-
-export type ErrorType = 
-    | "error_bad_request"
-    | "error_unauthorized"
-    | "error_forbidden"
-    | "error_not_found"
-    | "error_conflict"
-    | "error_unprocessable_entity"
-    | "error_internal_server_error";
+import { Request, Response, NextFunction } from "express";
+import { ErrorInfo } from "./errorInfo";
 
 
-    
-export class ErrorInfo {
-  type: ErrorType;
-  message: string;
-  constructor(errorType: ErrorType, message: string){
-    this.type = errorType;
-    this.message = message;
+export function errorHandler(err: any, req: Request, res: Response, next: NextFunction) {
+  if (err instanceof ErrorInfo) {
+    return res.status(mapErrorToStatus(err.type)).json({
+      error: err.type,
+      message: err.message
+    });
+  }
+
+  // fallback para erros inesperados
+  return res.status(500).json({
+    error: "error_internal_server_error",
+    message: "Ocorreu um erro inesperado"
+  });
+}
+
+// 🔎 função para mapear seu tipo para um status HTTP
+function mapErrorToStatus(type: string): number {
+  switch (type) {
+    case "error_bad_request":
+      return 400;
+    case "error_unauthorized":
+      return 401;
+    case "error_forbidden":
+      return 403;
+    case "error_not_found":
+      return 404;
+    case "error_conflict":
+      return 409;
+    case "error_unprocessable_entity":
+      return 422;
+    default:
+      return 500;
   }
 }

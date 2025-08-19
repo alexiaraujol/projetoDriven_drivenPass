@@ -11,7 +11,9 @@ export async function findByEmail (email: string){
 
 
 export async function create(name: string, email:string, password:string){
-    const response = await prisma.user.create({
+    return await prisma.user.create({
         data: {name, email, password}
     })
+
+
 }

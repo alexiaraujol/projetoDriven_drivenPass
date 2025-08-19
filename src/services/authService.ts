@@ -20,7 +20,7 @@ export async function creatNewUser(name: string, email: string, password: string
 
         throw new CustomError(
             `Nome inválido`,
-            409,
+            400,
             `Cadastre um nome válido`
         );
 
