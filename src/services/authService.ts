@@ -8,6 +8,8 @@ export async function creatNewUser(name: string, email: string, password: string
 
     const registered = await isRegistered(email)
 
+    console.log(name);
+
     if (registered) {
         throw new CustomError(
             `Usuário já cadastrado`,
@@ -16,7 +18,7 @@ export async function creatNewUser(name: string, email: string, password: string
         );
     }
 
-    if (name!) {
+    if (name === '') {
 
         throw new CustomError(
             `Nome inválido`,

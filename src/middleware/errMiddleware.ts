@@ -10,14 +10,12 @@ export function errorHandler(err: any, req: Request, res: Response, next: NextFu
     });
   }
 
-  // fallback para erros inesperados
   return res.status(500).json({
     error: "error_internal_server_error",
     message: "Ocorreu um erro inesperado"
   });
 }
 
-// 🔎 função para mapear seu tipo para um status HTTP
 function mapErrorToStatus(type: string): number {
   switch (type) {
     case "error_bad_request":

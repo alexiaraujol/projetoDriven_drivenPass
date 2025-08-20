@@ -1,6 +1,9 @@
 import { NextFunction, Request, Response } from "express";
 import { ErrorInfo } from "./errorInfo";
 import jwt from 'jsonwebtoken'
+import dotenv from "dotenv"
+
+dotenv.config();
 
 export async function authenticateToken (req: Request, res: Response, next: NextFunction){
     const { authorization } = req.headers;
