@@ -1,6 +1,6 @@
 import prisma from "../src/database/database"
 
-async function getOrCreateUserDemo() {
+async function main() {
     await prisma.user.upsert({
         where: {
             email: "email@demo.com"
@@ -14,7 +14,7 @@ async function getOrCreateUserDemo() {
     })
 }
 
-getOrCreateUserDemo()
+main()
     .then(async () => {
         await prisma.$disconnect()
     })

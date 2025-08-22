@@ -10,6 +10,8 @@ export function errorHandler(err: any, req: Request, res: Response, next: NextFu
     });
   }
 
+  console.log("Erro inesperado", err)
+
   return res.status(500).json({
     error: "error_internal_server_error",
     message: "Ocorreu um erro inesperado"

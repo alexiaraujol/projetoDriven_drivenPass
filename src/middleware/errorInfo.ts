@@ -12,9 +12,11 @@ export type ErrorType =
 export class ErrorInfo {
   type: ErrorType;
   message: string;
+ 
   constructor(errorType: ErrorType, message: string){
     this.type = errorType;
     this.message = message;
+    
   }
    toString() {
     return `${this.type}: ${this.message}`;

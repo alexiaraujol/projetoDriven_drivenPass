@@ -4,11 +4,11 @@ import * as userRepositorie from "../repositories/authRepositorie";
 import * as encryptUtil from '../utils/encryptUtil'
 
 
-export async function creatNewUser(name: string, email: string, password: string) {
+export async function createNewUser(name: string, email: string, password: string) {
 
     const registered = await isRegistered(email)
 
-    console.log(name);
+   
 
     if (registered) {
         throw new CustomError(
@@ -67,7 +67,7 @@ export async function login(email: string, password: string) {
 
 async function isRegistered(email: string) {
 
-    const register = userRepositorie.findByEmail(email)
+    const register = await userRepositorie.findByEmail(email)
 
     if (register) return register;
 
