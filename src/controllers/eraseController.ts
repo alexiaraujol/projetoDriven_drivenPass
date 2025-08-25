@@ -1,11 +1,12 @@
 import { Request, Response } from "express";
-import * as eraseService from "../services/eraseService";
+import { eraseUserByIdService } from "../services/eraseService";
 
-export async function eraseAllUsers(req: Request, res: Response) {
+export async function eraseUsers(req: Request, res: Response) {
     try {
-        await eraseService.eraseAllUsers();
-        res.status(200).send("Todos os usuários foram excluídos.");
+        const userId = Number(req.params.id)
+        await eraseUserByIdService(userId);
+        res.status(200).send("Usuario foi excluido!! ");
     } catch (error) {
-        res.status(500).send("Erro ao excluir usuários.");
+        res.status(500).send(error);
     }
 }

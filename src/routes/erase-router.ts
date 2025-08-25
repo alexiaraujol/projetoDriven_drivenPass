@@ -1,9 +1,10 @@
 import { Router } from "express";
 
-import { eraseAllUsers } from "../controllers/eraseController";
+import { eraseUsers } from "../controllers/eraseController";
+import { authenticateToken } from "../middleware/tokenMiddleware";
 
 const eraseRouter = Router();
 
-eraseRouter.delete("/delete-all-users", eraseAllUsers);
+eraseRouter.delete("/user/:id", authenticateToken, eraseUsers);
 
 export default eraseRouter;

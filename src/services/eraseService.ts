@@ -1,6 +1,7 @@
-import { deleteAll } from "../repositories/eraseRepositorie";
+import { deleteUserById } from "../repositories/eraseRepositorie";
 
 
-export async function eraseAllUsers() {
-  await deleteAll();
+
+export async function eraseUserByIdService(userId: number) {
+  await deleteUserById(userId);
 }
