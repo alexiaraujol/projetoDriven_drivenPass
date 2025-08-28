@@ -3,13 +3,13 @@ import prisma from "../src/database/database"
 async function main() {
     await prisma.user.upsert({
         where: {
-            email: "email@demo.com"
+            email: "demo@driven.com.br"
         },
         update: {},
         create: {
-            name: "demo_user",
-            email: "email@demo.com",
-            password: "senha_segura"
+            name: "Demo",
+            email: "demo@driven.com.br",
+            password: "demo123"
         }
     })
 }
