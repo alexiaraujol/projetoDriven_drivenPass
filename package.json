@@ -9,15 +9,15 @@
   "prisma": {
     "seed": "tsx prisma/seed.ts"
   },
-  "scripts": {
-    "build": "tsc && npm run copy:prisma",
-    "start": "npm run migration:run && node dist/src/index.js",
-    "dev": "ts-node-dev src/index.ts",
-    "migration:run": "prisma migrate deploy",
-    "copy:prisma": "cpx \"prisma/**/*/\"dist/prisma",
-    "prisma:generate": "prisma generate",
-    "postinstall": "prisma generate"
-  },
+"scripts": {
+  "build": "tsc && npm run copy:prisma",
+  "start": "npm run migration:run && node dist/index.js",
+  "dev": "ts-node-dev src/index.ts",
+  "migration:run": "prisma migrate deploy",
+  "copy:prisma": "cpx \"prisma/**/*\" dist/prisma",
+  "prisma:generate": "prisma generate",
+  "postinstall": "prisma generate"
+},
   "dependencies": {
     "@prisma/client": "^6.13.0",
     "bcryptjs": "^3.0.2",
