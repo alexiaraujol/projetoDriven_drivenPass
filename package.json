@@ -11,7 +11,7 @@
   },
 "scripts": {
   "build": "tsc && npm run copy:prisma",
-  "start": "npm run migration:run && node dist/index.js",
+  "start": "npm run migration:run && node dist/src/index.js",
   "dev": "ts-node-dev src/index.ts",
   "migration:run": "prisma migrate deploy",
   "copy:prisma": "cpx \"prisma/**/*\" dist/prisma",
