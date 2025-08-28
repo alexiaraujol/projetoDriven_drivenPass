@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const tokenMiddleware_1 = require("../middleware/tokenMiddleware");
+const validateSchema_1 = require("../middleware/validateSchema");
+const cardSchema_1 = require("../schema/cardSchema");
+const cardController_1 = require("../controllers/cardController");
+const cardRouter = (0, express_1.Router)();
+cardRouter.post('/', tokenMiddleware_1.authenticateToken, (0, validateSchema_1.validateSchema)(cardSchema_1.registerCard), cardController_1.createCard);
+cardRouter.get("/", tokenMiddleware_1.authenticateToken, cardController_1.getAllCards);
+cardRouter.get("/:id", tokenMiddleware_1.authenticateToken, cardController_1.specificCard);
+cardRouter.delete("/:id", tokenMiddleware_1.authenticateToken, cardController_1.deleteCard);
+exports.default = cardRouter;

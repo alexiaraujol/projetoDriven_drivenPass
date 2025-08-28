@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const credentialController_1 = require("../controllers/credentialController");
+const express_1 = require("express");
+const tokenMiddleware_1 = require("../middleware/tokenMiddleware");
+const validateSchema_1 = require("../middleware/validateSchema");
+const credentialSchema_1 = require("../schema/credentialSchema");
+const credentialRouter = (0, express_1.Router)();
+credentialRouter.post("/", tokenMiddleware_1.authenticateToken, (0, validateSchema_1.validateSchema)(credentialSchema_1.registerCredential), credentialController_1.createCredential);
+credentialRouter.get("/", tokenMiddleware_1.authenticateToken, credentialController_1.getAllCredential);
+credentialRouter.put("/:id", tokenMiddleware_1.authenticateToken, credentialController_1.specificCredentials);
+credentialRouter.delete("/:id", tokenMiddleware_1.authenticateToken, credentialController_1.deleteCredential);
+exports.default = credentialRouter;
