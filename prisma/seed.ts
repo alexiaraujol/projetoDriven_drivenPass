@@ -1,6 +1,10 @@
 import prisma from "../src/database/database"
+import bcrypt from "bcryptjs"
 
 async function main() {
+
+    const hashedPassword = await bcrypt.hash("demo123", 10);
+
     await prisma.user.upsert({
         where: {
             email: "demo@driven.com.br"
@@ -9,7 +13,7 @@ async function main() {
         create: {
             name: "Demo",
             email: "demo@driven.com.br",
-            password: "demo123"
+            password: hashedPassword
         }
     })
 }
