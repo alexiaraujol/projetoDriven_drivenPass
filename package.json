@@ -14,7 +14,9 @@
     "start": "npm run migration:run && node dist/src/index.js",
     "dev": "ts-node-dev src/index.ts",
     "migration:run": "prisma migrate deploy",
-    "copy:prisma": "cpx \"prisma/**/*\" dist/prisma"
+    "copy:prisma": "cpx \"prisma/**/*\" dist/prisma",
+    "prisma:generate": "prisma generate",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^6.13.0",
